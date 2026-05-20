@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using SaaSManagement.Application.DependencyInjection;
 using SaaSManagement.Web.Client.Pages;
 using SaaSManagement.Web.Components;
 using SaaSManagement.Web.Components.Account;
@@ -36,6 +37,8 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlite(
                                                         connectionString));
+
+builder.Services.ApplicationServiceRegistration(); // All services from Application Project
 
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
