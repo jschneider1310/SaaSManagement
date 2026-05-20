@@ -15,6 +15,7 @@
 
     <ItemGroup>
         <ProjectReference Include="..\..\SaaSManagement.Infrastructure\SaaSManagement.Infrastructure.csproj" />
+        <ProjectReference Include="..\..\SaaSManagement.Web.Shared\SaaSManagement.Web.Shared.csproj" />
         <ProjectReference Include="..\SaaSManagement.Web.Client\SaaSManagement.Web.Client.csproj"/>
         <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="10.0.0"/>
         <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="10.0.0"/>
