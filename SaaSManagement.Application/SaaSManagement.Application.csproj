@@ -7,11 +7,11 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="DependencyInjection\" />
+      <ProjectReference Include="..\SaaSManagement.Core\SaaSManagement.Core.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\SaaSManagement.Core\SaaSManagement.Core.csproj" />
+      <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="10.0.0" />
     </ItemGroup>
 
 </Project>
