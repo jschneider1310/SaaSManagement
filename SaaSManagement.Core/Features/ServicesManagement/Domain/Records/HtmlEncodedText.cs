@@ -4,7 +4,7 @@
 using SaaSManagement.Core.Shared.Exceptions;
 using SaaSManagement.Core.Shared.Utilities;
 
-namespace SaaSManagement.Core.Features.ServicesManagement.Records;
+namespace SaaSManagement.Core.Features.ServicesManagement.Domain.Records;
 
 public sealed record HtmlEncodedText()
 {

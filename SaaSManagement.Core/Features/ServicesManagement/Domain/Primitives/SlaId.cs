@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using SaaSManagement.Core.Shared.Constants;
 using ApplicationId = SaaSManagement.Core.Shared.Abstractions.ApplicationId;
 
-namespace SaaSManagement.Core.Features.ServicesManagement.Primitives;
+namespace SaaSManagement.Core.Features.ServicesManagement.Domain.Primitives;
 
 public sealed class SlaId : ApplicationId
 {

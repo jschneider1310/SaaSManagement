@@ -9,6 +9,8 @@
     <ItemGroup>
       <Folder Include="Company\" />
       <Folder Include="DependencyInjection\" />
+      <Folder Include="Features\ServicesManagement\Application\" />
+      <Folder Include="Features\ServicesManagement\Domain\" />
     </ItemGroup>
 
     <ItemGroup>
