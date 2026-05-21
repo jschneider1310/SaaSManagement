@@ -9,7 +9,7 @@
     <ItemGroup>
       <Folder Include="DependencyInjection\" />
       <Folder Include="Persistence\" />
-      <Folder Include="RepositoryImplementations\" />
+      <Folder Include="Repositories\" />
     </ItemGroup>
 
     <ItemGroup>
