@@ -1,11 +1,12 @@
 // Project: SaaSManagement, 21/05/2026
 // Author: J. Schneider - j.g@live.com
 
-using System.Collections.ObjectModel;
 using SaaSManagement.Core.Features.CustomerManagement.Entities;
 using SaaSManagement.Core.Features.ServicesManagement.Primitives;
 using SaaSManagement.Core.Features.ServicesManagement.Records;
 using SaaSManagement.Core.Shared.Abstractions;
+using SaaSManagement.Core.Shared.Exceptions;
+using SaaSManagement.Core.Shared.Utilities;
 
 namespace SaaSManagement.Core.Features.ServicesManagement.Entities;
 
@@ -17,12 +18,7 @@ public sealed class ServiceLevelAgreement : Entity<SlaId>
     private new SlaId Id { get; set; } = $"SLA-{Ulid.NewUlid()}";
     public Customer Customer { get; private set; }
     public string Title { get; private set; }
-    private readonly List<AvailabilityDefinition> _availabilityDefinitions = [];
-
-    public ReadOnlyCollection<AvailabilityDefinition> AvailabilityDefinitions
-        => _availabilityDefinitions.AsReadOnly();
-
-
+    public HtmlEncodedText AgreementText { get; private set; }
     public DateTime StartingDate { get; private set; }
     public DateTime EndingDate { get; private set; }
     public bool IsClosed { get; private set; }
@@ -30,20 +26,24 @@ public sealed class ServiceLevelAgreement : Entity<SlaId>
 
     private ServiceLevelAgreement() { }
 
-    private ServiceLevelAgreement(Customer user, string title, DateTime startingDate,
-        int contractLength)
+    private ServiceLevelAgreement(Customer user, string title,
+        HtmlEncodedText agreementText, DateTime startingDate, int contractLength)
     {
         Customer = user;
         Title = title;
+        AgreementText = agreementText;
         StartingDate = startingDate;
         ContractLength = contractLength;
     }
 
     public static ServiceLevelAgreement Create(Customer customer, string title,
-        DateTime startingDate, int contractLength)
+        HtmlEncodedText text, DateTime startingDate, int contractLength)
     {
+        if(!VerifyIf.IsNotEmptyOrNullString(title))
+            throw new SLAException("The title must be a non-empty string.", nameof(ServiceLevelAgreement));
+        
         var agreement
-            = new ServiceLevelAgreement(customer, title, startingDate, contractLength);
+            = new ServiceLevelAgreement(customer, title, text, startingDate, contractLength);
 
         return agreement;
     }
@@ -53,10 +53,6 @@ public sealed class ServiceLevelAgreement : Entity<SlaId>
         EndingDate = endDate is null ? DateTime.UtcNow : endDate.Value;
         IsClosed = true;
     }
-
-    public void AddAvailabilityDefinition(AvailabilityDefinition availabilityDefinition)
-        => _availabilityDefinitions.Add(availabilityDefinition);
-
 
     public override string GetId() => Id;
 }
