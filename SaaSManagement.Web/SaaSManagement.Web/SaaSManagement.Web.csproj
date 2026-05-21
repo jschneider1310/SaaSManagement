@@ -14,6 +14,7 @@
     </ItemGroup>
 
     <ItemGroup>
+        <PackageReference Include="Scrutor" Version="7.0.0" />
         <ProjectReference Include="..\..\SaaSManagement.Infrastructure\SaaSManagement.Infrastructure.csproj" />
         <ProjectReference Include="..\..\SaaSManagement.Web.Shared\SaaSManagement.Web.Shared.csproj" />
         <ProjectReference Include="..\SaaSManagement.Web.Client\SaaSManagement.Web.Client.csproj"/>
