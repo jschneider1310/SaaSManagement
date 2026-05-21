@@ -3,6 +3,6 @@
 
 namespace SaaSManagement.Core.Features.ServicesManagement.Records;
 
-public record AvailabilityDefinition(
-    int Order, string Name, string Description, string Definition, string ResponseTime,
+public sealed record AvailabilityDefinition(
+    int Order, string DefinitionName, string Description, string Definition, string ResponseTime,
     string TargetResolutionTime, string BusinessHours);
