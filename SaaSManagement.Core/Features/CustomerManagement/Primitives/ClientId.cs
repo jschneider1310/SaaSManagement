@@ -9,7 +9,7 @@ namespace SaaSManagement.Core.Features.CustomerManagement.Primitives;
 /// <summary>
 /// Value Object class that represents an ID for any type of customer in this application.
 /// </summary>
-internal sealed class ClientId : ApplicationId
+public sealed class ClientId : ApplicationId
 {
     [MaxLength(CoreConstants.ApplicationIdsMaxCharacters)]
     protected override string Value { get; set; }
