@@ -35,7 +35,17 @@ public sealed class ServiceLevelAgreement : Entity<SlaId>
         StartingDate = startingDate;
         ContractLength = contractLength;
     }
-
+    /// <summary>
+    /// Method for creating a new <see cref="ServiceLevelAgreement"/> with the given
+    /// parameters.
+    /// </summary>
+    /// <param name="customer"><see cref="Customer"/></param>
+    /// <param name="title">String</param>
+    /// <param name="text"><see cref="HtmlEncodedText"/></param>
+    /// <param name="startingDate">DateTime</param>
+    /// <param name="contractLength">Integer</param>
+    /// <returns>A new ServiceLevelAgreement object</returns>
+    /// <exception cref="SLAException"><see cref="SLAException"/> if title is null, empty, or white spaces.</exception>
     public static ServiceLevelAgreement Create(Customer customer, string title,
         HtmlEncodedText text, DateTime startingDate, int contractLength)
     {
@@ -47,11 +57,31 @@ public sealed class ServiceLevelAgreement : Entity<SlaId>
 
         return agreement;
     }
-
+    /// <summary>
+    /// Updates the SLA title
+    /// </summary>
+    /// <param name="title">String</param>
+    /// <exception cref="SLAException">If the title is null, empty, or white spaces.</exception>
+    public void UpdateTitle(string title)
+    {
+        if(!VerifyIf.IsNotEmptyOrNullString(title))
+            throw new SLAException("The title must be a non-empty string.", nameof(ServiceLevelAgreement));
+        Title = title;
+    }
+    /// <summary>
+    /// Updates the AgreementText with the new <see cref="HtmlEncodedText"/> object.
+    /// </summary>
+    /// <param name="text"><see cref="HtmlEncodedText"/></param>
+    public void UpdateAgreementText(HtmlEncodedText text) => AgreementText = text;
+    /// <summary>
+    /// Closes (inactivate) the contract.
+    /// </summary>
+    /// <param name="endDate">The date the contract was closed.</param>
     public void CloseContract(DateTime? endDate)
     {
         EndingDate = endDate is null ? DateTime.UtcNow : endDate.Value;
         IsClosed = true;
+        Archive();
     }
 
     public override string GetId() => Id;
