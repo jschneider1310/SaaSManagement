@@ -4,7 +4,7 @@
 using System.ComponentModel.DataAnnotations;
 using SaaSManagement.Core.Shared.Constants;
 
-namespace SaaSManagement.Core.Shared.Abstractions;
+namespace SaaSManagement.Core.Shared.Abstractions.Classes;
 /// <summary>
 /// Abstract class for all relevant ids used by the system.
 /// </summary>

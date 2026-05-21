@@ -1,7 +1,7 @@
 // Project: SaaSManagement, 21/05/2026
 // Author: J. Schneider - j.g@live.com
 
-namespace SaaSManagement.Core.Shared.Abstractions;
+namespace SaaSManagement.Core.Shared.Abstractions.Classes;
 
 /// <summary>
 /// Abstract class that represents the value object.

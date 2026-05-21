@@ -3,7 +3,7 @@
 
 using System.ComponentModel.DataAnnotations;
 using SaaSManagement.Core.Shared.Constants;
-using ApplicationId = SaaSManagement.Core.Shared.Abstractions.ApplicationId;
+using ApplicationId = SaaSManagement.Core.Shared.Abstractions.Classes.ApplicationId;
 
 namespace SaaSManagement.Core.CustomerManagement.Primitives;
 /// <summary>

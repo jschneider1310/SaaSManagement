@@ -4,6 +4,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 using SaaSManagement.Core.Shared.Abstractions;
+using SaaSManagement.Core.Shared.Abstractions.Classes;
 using SaaSManagement.Core.Shared.Exceptions;
 using SaaSManagement.Core.Shared.Utilities;
 

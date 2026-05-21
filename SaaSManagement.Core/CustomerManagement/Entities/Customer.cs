@@ -3,6 +3,7 @@
 
 using SaaSManagement.Core.CustomerManagement.Primitives;
 using SaaSManagement.Core.Shared.Abstractions;
+using SaaSManagement.Core.Shared.Abstractions.Classes;
 
 namespace SaaSManagement.Core.CustomerManagement.Entities;
 
