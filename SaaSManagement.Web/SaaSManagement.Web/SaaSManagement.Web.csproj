@@ -23,6 +23,10 @@
         <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="10.0.0"/>
         <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="10.0.0"/>
         <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="10.0.0"/>
+        <PackageReference Update="SonarAnalyzer.CSharp" Version="10.26.0.140279">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
     </ItemGroup>
 
     <ItemGroup>

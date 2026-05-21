@@ -1,8 +1,10 @@
 // Project: SaaSManagement, 21/05/2026
 // Author: J. Schneider - j.g@live.com
 
+using System.Windows.Input;
 using SaaSManagement.Application.Abstractions.Interfaces;
 using Scrutor;
+using ICommand = SaaSManagement.Application.Abstractions.Interfaces.ICommand;
 
 namespace SaaSManagement.Web.Extensions;
 internal static class HandlersRegistrationExtension
