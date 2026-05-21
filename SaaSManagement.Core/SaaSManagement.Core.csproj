@@ -8,6 +8,11 @@
 
     <ItemGroup>
       <Folder Include="DependencyInjection\" />
+      <Folder Include="Features\CustomerManagement\" />
+      <Folder Include="Shared\Abstractions\" />
+      <Folder Include="Shared\Constants\" />
+      <Folder Include="Shared\Exceptions\" />
+      <Folder Include="Shared\Primitives\" />
     </ItemGroup>
 
 </Project>
