@@ -2,12 +2,16 @@ using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using SaaSManagement.Application.DependencyInjection;
-using SaaSManagement.Web.Client.Pages;
 using SaaSManagement.Web.Components;
 using SaaSManagement.Web.Components.Account;
 using SaaSManagement.Web.Data;
+using SaaSManagement.Web.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Custom global exception handler
+builder.Services.AddSingleton<IGlobalExceptionHandler, GlobalExceptionHandler>();
+
 
 // Add services to the container.
 builder.Services.AddRazorComponents()

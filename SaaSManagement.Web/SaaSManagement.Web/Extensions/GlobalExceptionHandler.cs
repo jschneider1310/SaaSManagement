@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace SaaSManagement.Web.Extensions;
 
-internal sealed class GlobalExceptionHandler(IProblemDetailsService problemDetailsService) : IExceptionHandler
+internal sealed class GlobalExceptionHandler(IProblemDetailsService problemDetailsService) : IGlobalExceptionHandler
 {
     public async ValueTask<bool> TryHandleAsync(HttpContext httpContext,
         Exception exception,
