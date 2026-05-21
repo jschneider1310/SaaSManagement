@@ -2,7 +2,10 @@
 // Author: J. Schneider - j.g@live.com
 
 namespace SaaSManagement.Core.Shared.Abstractions;
-
+/// <summary>
+/// Abstract class for all entity classes.
+/// </summary>
+/// <typeparam name="TId">Id type of the entity</typeparam>
 public abstract class Entity<TId>
 {
     // Allows import entities with early date creation
