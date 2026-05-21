@@ -1,7 +1,7 @@
 // Project: SaaSManagement, 21/05/2026
 // Author: J. Schneider - j.g@live.com
 
-namespace SaaSManagement.Core.Features.CustomerManagement.Constants;
+namespace SaaSManagement.Core.CustomerManagement.Constants;
 /// <summary>
 /// Defines the Customer Types using the system
 /// </summary>

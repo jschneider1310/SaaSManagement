@@ -9,12 +9,25 @@
     <ItemGroup>
       <Folder Include="Company\" />
       <Folder Include="DependencyInjection\" />
-      <Folder Include="Features\ServicesManagement\Application\" />
-      <Folder Include="Features\ServicesManagement\Domain\" />
+      <Folder Include="Shared\Abstractions\Interfaces\" />
     </ItemGroup>
 
     <ItemGroup>
+      <PackageReference Include="Microsoft.AspNetCore.Routing" Version="2.3.10" />
+      <PackageReference Include="Microsoft.AspNetCore.Routing.Abstractions" Version="2.3.10" />
       <PackageReference Include="Ulid" Version="1.4.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Remove="Features\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Remove="Features\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Features\**" />
     </ItemGroup>
 
 </Project>

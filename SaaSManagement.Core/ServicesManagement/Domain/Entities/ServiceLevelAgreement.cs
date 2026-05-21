@@ -1,14 +1,14 @@
 // Project: SaaSManagement, 21/05/2026
 // Author: J. Schneider - j.g@live.com
 
-using SaaSManagement.Core.Features.CustomerManagement.Entities;
-using SaaSManagement.Core.Features.ServicesManagement.Domain.Primitives;
-using SaaSManagement.Core.Features.ServicesManagement.Domain.Records;
+using SaaSManagement.Core.CustomerManagement.Entities;
+using SaaSManagement.Core.ServicesManagement.Domain.Primitives;
+using SaaSManagement.Core.ServicesManagement.Domain.Records;
 using SaaSManagement.Core.Shared.Abstractions;
 using SaaSManagement.Core.Shared.Exceptions;
 using SaaSManagement.Core.Shared.Utilities;
 
-namespace SaaSManagement.Core.Features.ServicesManagement.Domain.Entities;
+namespace SaaSManagement.Core.ServicesManagement.Domain.Entities;
 
 /// <summary>
 /// Represents a Service-Level Agreement for a given SaaS service provided.

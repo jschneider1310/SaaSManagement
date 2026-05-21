@@ -5,23 +5,20 @@ using System.ComponentModel.DataAnnotations;
 using SaaSManagement.Core.Shared.Constants;
 using ApplicationId = SaaSManagement.Core.Shared.Abstractions.ApplicationId;
 
-namespace SaaSManagement.Core.Features.CustomerManagement.Primitives;
-/// <summary>
-/// Value Object class that represents an ID for any type of customer in this application.
-/// </summary>
-public sealed class ClientId : ApplicationId
+namespace SaaSManagement.Core.ServicesManagement.Domain.Primitives;
+
+public sealed class SlaId : ApplicationId
 {
     [MaxLength(CoreConstants.ApplicationIdsMaxCharacters)]
     protected override string Value { get; set; }
 
-
-    public ClientId(string id)
+    private SlaId(string id)
     {
         Value = id;
     }
 
-    public static implicit operator string(ClientId clientId) => clientId.Value;
-    public static implicit operator ClientId(string clientId) => new(clientId);
+    public static implicit operator string(SlaId slaId) => slaId.Value;
+    public static implicit operator SlaId(string id) => new(id);
 
     protected override IEnumerable<object> GetAtomicValues()
         {
