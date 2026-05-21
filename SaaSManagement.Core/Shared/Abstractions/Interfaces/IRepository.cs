@@ -73,12 +73,12 @@ public interface IRepository<T, TId> where T : Entity<TId>
     /// </summary>
     /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
     /// <returns><see cref="Result"/> with an <see cref="IEnumerable{T}"/> of T entities.</returns>
-    Task<Result<IEnumerable<T>>> GetAllAsync(CancellationToken cancellationToken = default);
+    Task<Result<IEnumerable<T>?>> GetAllAsync(CancellationToken cancellationToken = default);
     /// <summary>
     /// Gets a list with all T entities that satisfy the given predicate.
     /// </summary>
     /// <param name="predicate">Expression with the search parameters.</param>
     /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
     /// <returns><see cref="Result"/> with an <see cref="IEnumerable{T}"/> of T entities that satisfy the predicate</returns>
-    Task<Result<IEnumerable<T>>> GetAllAsync(Expression<Func<T, bool>> predicate, CancellationToken cancellationToken = default);
+    Task<Result<IEnumerable<T>?>> GetAllAsync(Expression<Func<T, bool>> predicate, CancellationToken cancellationToken = default);
 }
