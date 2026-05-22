@@ -7,7 +7,7 @@ using SaaSManagement.Core.Shared.Abstractions.Classes;
 
 namespace SaaSManagement.Core.CustomerManagement.Entities;
 
-public sealed class Customer : AggregateRoot<ClientId>
+public class Customer : AggregateRoot<ClientId>
 {
     public new ClientId Id { get; private set; }
     
