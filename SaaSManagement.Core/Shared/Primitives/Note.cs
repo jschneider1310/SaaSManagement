@@ -29,29 +29,37 @@ public class Note : ValueObject
         ClientId = clientId;
         CreatedAt = DateTime.UtcNow;
     }
+
     /// <summary>
     /// Updates the Note's title.
     /// </summary>
     /// <param name="title">String with max length of 40 characters</param>
     /// <exception cref="NoteArgumentException">If the parameter title is null, empty, or white spaces.</exception>
     public void UpdateTitle(string title)
-    { 
-        if(!VerifyIf.IsNotEmptyOrNullString(title)) throw new NoteArgumentException($"The Title ({title}) must not be null or empty.");
+    {
+        if (!VerifyIf.IsNotEmptyOrNullString(title))
+            throw new NoteArgumentException(
+                $"The Title ({title}) must not be null or empty.");
+
         Title = title;
         UpdatedAt = DateTime.UtcNow;
     }
+
     /// <summary>
     /// Updates the Note's content.
     /// </summary>
     /// <param name="content">String with max length of 400 characters</param>
     /// <exception cref="NoteArgumentException">If the parameter content is null, empty, or white spaces.</exception>
     public void UpdateContent(string content)
-    { 
-        if(!VerifyIf.IsNotEmptyOrNullString(content)) throw new NoteArgumentException($"The Content ({content}) must not be null or empty.");
+    {
+        if (!VerifyIf.IsNotEmptyOrNullString(content))
+            throw new NoteArgumentException(
+                $"The Content ({content}) must not be null or empty.");
+
         Content = content;
         UpdatedAt = DateTime.UtcNow;
-
     }
+
     /// <summary>
     /// Updates the title, content, and <see cref="NoteType"/>
     /// </summary>
@@ -67,6 +75,13 @@ public class Note : ValueObject
         NoteType = noteType;
         UpdatedAt = DateTime.UtcNow;
     }
+
+    /// <summary>
+    /// Updates the <see cref="NoteType"/>
+    /// </summary>
+    /// <param name="noteType"><see cref="NoteType"/></param>
+    public void UpdateNoteType(NoteType noteType) => NoteType = noteType;
+
     protected override IEnumerable<object> GetAtomicValues()
     {
         yield return NoteId;
@@ -75,6 +90,7 @@ public class Note : ValueObject
         yield return CreatedAt;
         yield return ClientId;
     }
+
     /// <summary>
     /// Private method that validates the string parameters.
     /// </summary>
@@ -83,7 +99,8 @@ public class Note : ValueObject
     /// <exception cref="NoteArgumentException">If one or both parameters are null, empty, or white spaces.</exception>
     private static void VerifyValidNoteArgument(string title, string content)
     {
-        if(!VerifyIf.IsNotEmptyOrNullString(title, content))
-            throw new NoteArgumentException($"The arguments Title ({title}) and/or Content ({content}) must not be null or empty.");
+        if (!VerifyIf.IsNotEmptyOrNullString(title, content))
+            throw new NoteArgumentException(
+                $"The arguments Title ({title}) and/or Content ({content}) must not be null or empty.");
     }
 }

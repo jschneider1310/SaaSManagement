@@ -17,6 +17,5 @@ public interface IApplicationDbContext
     DbSet<BusinessCustomer> BusinessCustomers { get; set; }
     DbSet<ServiceLevelAgreement> ServiceLevelAgreements { get; set; }
     DbSet<Address> Addresses { get; set; }
-    DbSet<ClientHistory> ClientHistories { get; set; }
     DbSet<Note> Notes { get; set; }
 }

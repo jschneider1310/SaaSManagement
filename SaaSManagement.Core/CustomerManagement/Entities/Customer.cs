@@ -3,6 +3,7 @@
 
 using System.ComponentModel.DataAnnotations;
 using SaaSManagement.Core.CustomerManagement.Primitives;
+using SaaSManagement.Core.ServicesManagement.Domain.Entities;
 using SaaSManagement.Core.Shared.Abstractions.Classes;
 using SaaSManagement.Core.Shared.Primitives;
 
@@ -24,13 +25,15 @@ public abstract class Customer : AggregateRoot<ClientId>
     public Email Email { get; private set; }
     public PhoneNumber PhoneNumber { get; private set; }
     [MaxLength(256)] public string? WebsiteAddress { get; private set; } =  string.Empty;
+    public ServiceLevelAgreement ServiceLevelAgreement { get; private set; }
 
 
-    protected Customer(Email email, PhoneNumber phoneNumber, string? websiteAddress)
+    protected Customer(Email email, PhoneNumber phoneNumber, string? websiteAddress, ServiceLevelAgreement serviceLevelAgreement)
     {
         Email = email;
         PhoneNumber = phoneNumber;
         WebsiteAddress = websiteAddress ??  string.Empty;
+        ServiceLevelAgreement = serviceLevelAgreement;
     }
 
     protected Customer() { }
@@ -100,5 +103,7 @@ public abstract class Customer : AggregateRoot<ClientId>
             throw new ArgumentNullException(nameof(websiteAddress));
         WebsiteAddress = websiteAddress;
     }
+    
+    public void UpdateSla(ServiceLevelAgreement sla) => ServiceLevelAgreement = sla;
     public override string GetId() => Id;
 }

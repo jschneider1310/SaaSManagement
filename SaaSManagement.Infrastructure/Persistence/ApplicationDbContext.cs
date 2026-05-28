@@ -16,6 +16,5 @@ public sealed class ApplicationDbContext : IApplicationDbContext
     public DbSet<BusinessCustomer> BusinessCustomers { get; set; }
     public DbSet<ServiceLevelAgreement> ServiceLevelAgreements { get; set; }
     public DbSet<Address> Addresses { get; set; }
-    public DbSet<ClientHistory> ClientHistories { get; set; }
     public DbSet<Note> Notes { get; set; }
 }
