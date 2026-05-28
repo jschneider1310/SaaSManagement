@@ -1,6 +1,7 @@
 // Project: SaaSManagement, 21/05/2026
 // Author: J. Schneider - j.g@live.com
 
+using System.ComponentModel.DataAnnotations;
 using SaaSManagement.Core.CustomerManagement.Primitives;
 using SaaSManagement.Core.Shared.Abstractions.Classes;
 using SaaSManagement.Core.Shared.Primitives;
@@ -16,12 +17,12 @@ public class Customer : AggregateRoot<ClientId>
 {
     private readonly List<Address> _addresses = [];
     private readonly List<Note> _notes = [];
-    private readonly List<ClientHistory> _clientHistories = [];
-    
-    public new ClientId Id { get; private set; }
+
+    public new ClientId Id { get; private set; } = new ClientId($"C-{Ulid.NewUlid().ToString()}");
     public IReadOnlyCollection<Address> Addresses  => _addresses;
     public IReadOnlyCollection<Note> Notes => _notes;
-    public IReadOnlyCollection<ClientHistory> ClientHistories => _clientHistories;
+    public Email Email { get; private set; }
+    [MaxLength(256)] public string WebsiteAddress { get; private set; }
     
     
     
