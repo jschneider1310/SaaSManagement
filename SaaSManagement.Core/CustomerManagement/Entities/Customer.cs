@@ -13,19 +13,36 @@ namespace SaaSManagement.Core.CustomerManagement.Entities;
 /// Here we placed all common fields for a customer, leaving the specific implementations
 /// of each type on its own responsibility.
 /// </summary>
-public class Customer : AggregateRoot<ClientId>
+public abstract class Customer : AggregateRoot<ClientId>
 {
     private readonly List<Address> _addresses = [];
     private readonly List<Note> _notes = [];
 
-    public new ClientId Id { get; private set; } = new ClientId($"C-{Ulid.NewUlid().ToString()}");
+    public new ClientId Id { get; private set; } = new ClientId($"C-{Ulid.NewUlid()}");
     public IReadOnlyCollection<Address> Addresses  => _addresses;
     public IReadOnlyCollection<Note> Notes => _notes;
     public Email Email { get; private set; }
-    [MaxLength(256)] public string WebsiteAddress { get; private set; }
-    
-    
-    
+    public PhoneNumber PhoneNumber { get; private set; }
+    [MaxLength(256)] public string? WebsiteAddress { get; private set; } =  string.Empty;
+
+
+    protected Customer(Email email, PhoneNumber phoneNumber, string? websiteAddress)
+    {
+        Email = email;
+        PhoneNumber = phoneNumber;
+        WebsiteAddress = websiteAddress ??  string.Empty;
+    }
+
+    protected Customer() { }
+
+    /// <summary>
+    /// Gets the client's full name (first and last name) if an individual, or
+    /// the company's legal name if a business.
+    /// </summary>
+    /// <returns>String with the full name.</returns>
+    public abstract string GetFullName();
+
+
     /// <summary>
     /// Adds an <see cref="Address"/> to the aggregate root.
     /// </summary>
@@ -75,6 +92,13 @@ public class Customer : AggregateRoot<ClientId>
         {
             _notes.Add(note);
         }
+    }
+    public void UpdateEmail(Email email) => Email = email;
+    public void UpdateWebsiteAddress(string websiteAddress)
+    { 
+        if(string.IsNullOrWhiteSpace(websiteAddress))
+            throw new ArgumentNullException(nameof(websiteAddress));
+        WebsiteAddress = websiteAddress;
     }
     public override string GetId() => Id;
 }
