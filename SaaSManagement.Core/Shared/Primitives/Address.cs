@@ -135,6 +135,7 @@ public sealed class Address : ValueObject
 
     protected override IEnumerable<object> GetAtomicValues()
     {
+        yield return AddressId;
         yield return NumberOrBuildingName;
         yield return AddressLine1;
         yield return AddressLine2;

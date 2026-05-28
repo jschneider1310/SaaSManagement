@@ -2,21 +2,78 @@
 // Author: J. Schneider - j.g@live.com
 
 using SaaSManagement.Core.CustomerManagement.Primitives;
-using SaaSManagement.Core.Shared.Abstractions;
 using SaaSManagement.Core.Shared.Abstractions.Classes;
+using SaaSManagement.Core.Shared.Primitives;
 
 namespace SaaSManagement.Core.CustomerManagement.Entities;
 /// <summary>
 /// Represents a Customer into the system. It is the aggregate root for different
 /// types of customers (<see cref="IndividualCustomer"/> and <see cref="BusinessCustomer"/>).
 /// Here we placed all common fields for a customer, leaving the specific implementations
-/// of each type for its own responsibility.
+/// of each type on its own responsibility.
 /// </summary>
 public class Customer : AggregateRoot<ClientId>
 {
+    private readonly List<Address> _addresses = [];
+    private readonly List<Note> _notes = [];
+    private readonly List<ClientHistory> _clientHistories = [];
+    
     public new ClientId Id { get; private set; }
+    public IReadOnlyCollection<Address> Addresses  => _addresses;
+    public IReadOnlyCollection<Note> Notes => _notes;
+    public IReadOnlyCollection<ClientHistory> ClientHistories => _clientHistories;
     
     
     
+    /// <summary>
+    /// Adds an <see cref="Address"/> to the aggregate root.
+    /// </summary>
+    /// <param name="address"><see cref="Address"/> object</param>
+    public void AddAddress(Address address) => _addresses.Add(address);
+    /// <summary>
+    /// Removes an <see cref="Address"/> from the aggregate.
+    /// </summary>
+    /// <param name="address"><see cref="Address"/> object.</param>
+    public void RemoveAddress(Address address) => _addresses.Remove(address);
+    /// <summary>
+    /// Updates an <see cref="Address"/> on the aggregate. If the address is not found,
+    /// the given address is added, and updated otherwise.
+    /// </summary>
+    /// <param name="address"><see cref="Address"/> object.</param>
+    public void UpdateAddress(Address address)
+    {
+        var addr = _addresses.Any(p => p.Equals(address));
+        if (addr)
+        {
+            var oldAddress = _addresses.FirstOrDefault(p => p.Equals(address)); 
+            oldAddress.UpdateNumberOrBuildingName(address.NumberOrBuildingName); // Not null because it is a required field of Address object.
+            oldAddress.UpdateAddressLine1(address.AddressLine1);
+            oldAddress.UpdateAddressLine2(address.AddressLine2);
+            oldAddress.UpdatePostalCode(address.PostalCode);
+            oldAddress.UpdateCity(address.City);
+            oldAddress.UpdateCountry(address.Country);
+            oldAddress.UpdateBorough(address.Borough);
+        }
+        else
+        {
+            _addresses.Add(address);
+        }
+    }
+
+    public void AddNote(Note note) => _notes.Add(note);
+    public void RemoveNote(Note note) => _notes.Remove(note);
+
+    public void UpdateNote(Note note)
+    {
+        var oldNote = _notes.FirstOrDefault(p => p.Equals(note));
+        if (oldNote != null)
+        {
+            oldNote.UpdateNote(note.Title, note.Content, note.NoteType);
+        }
+        else
+        {
+            _notes.Add(note);
+        }
+    }
     public override string GetId() => Id;
 }

@@ -3,7 +3,7 @@
 
 using SaaSManagement.Core.CustomerManagement.Entities;
 using SaaSManagement.Core.ServicesManagement.Domain.Primitives;
-using SaaSManagement.Core.ServicesManagement.Domain.Records;
+using SaaSManagement.Core.ServicesManagement.Records;
 using SaaSManagement.Core.Shared.Abstractions;
 using SaaSManagement.Core.Shared.Abstractions.Classes;
 using SaaSManagement.Core.Shared.Exceptions;

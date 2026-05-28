@@ -11,9 +11,9 @@ namespace SaaSManagement.Core.Shared.Primitives;
 
 public class Note : ValueObject
 {
-    private NoteId NoteId { get; set; }
-    [MaxLength(40)] private string Title { get; set; }
-    [MaxLength(400)] private string Content { get; set; }
+    public NoteId NoteId { get; private set; }
+    [MaxLength(40)] public string Title { get; private set; }
+    [MaxLength(400)] public string Content { get; private set; }
     private DateTime CreatedAt { get; set; }
     public DateTime? UpdatedAt { get; private set; }
     public NoteType NoteType { get; private set; }
