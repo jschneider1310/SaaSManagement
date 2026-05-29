@@ -19,7 +19,11 @@ public abstract class Customer : AggregateRoot<ClientId>
 {
     private readonly List<Address> _addresses = [];
     private readonly List<Note> _notes = [];
-
+    /// <summary>
+    /// The Id field uses a <see cref="ClientId"/> composed by a prefix C- followed by
+    /// a <see cref="Ulid"/>, and is the same for both <see cref="IndividualCustomer"/>
+    /// and <see cref="BusinessCustomer"/>
+    /// </summary>
     public new ClientId Id { get; private set; } = new ClientId($"C-{Ulid.NewUlid()}");
     public IReadOnlyCollection<Address> Addresses => _addresses;
     public IReadOnlyCollection<Note> Notes => _notes;
