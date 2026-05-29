@@ -2,7 +2,7 @@
 // Author: J. Schneider - j.g@live.com
 
 using System.ComponentModel.DataAnnotations;
-using SaaSManagement.Core.CustomerManagement.Primitives;
+using SaaSManagement.Core.CustomerManagement.Domain.Primitives;
 using SaaSManagement.Core.Shared.Abstractions.Classes;
 using SaaSManagement.Core.Shared.Exceptions;
 using SaaSManagement.Core.Shared.Utilities;

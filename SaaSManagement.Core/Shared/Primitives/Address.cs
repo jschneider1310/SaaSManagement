@@ -18,7 +18,7 @@ namespace SaaSManagement.Core.Shared.Primitives;
 /// </summary>
 public sealed class Address : ValueObject
 {
-    protected Address()
+    private Address()
     {
     }
 
@@ -51,7 +51,7 @@ public sealed class Address : ValueObject
         Borough = borough;
         Country = country;
     }
-    public AddressId AddressId { get; private set; }
+    public AddressId AddressId { get; private set; } = null!;
     [MaxLength(60)] public string NumberOrBuildingName { get; private set; } = string.Empty;
     [MaxLength(60)] public string AddressLine1 { get; private set; } = string.Empty;
     [MaxLength(60)] public string AddressLine2 { get; private set; } = string.Empty;

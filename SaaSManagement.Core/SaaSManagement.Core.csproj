@@ -8,8 +8,15 @@
 
     <ItemGroup>
       <Folder Include="Company\" />
-      <Folder Include="CustomerManagement\DomainServices\" />
-      <Folder Include="DependencyInjection\" />
+      <Folder Include="CustomerManagement\Application\" />
+      <Folder Include="CustomerManagement\Domain\DomainServices\" />
+      <Folder Include="CustomerManagement\Infrastructure\" />
+      <Folder Include="Infrastructure\DependencyInjection\" />
+      <Folder Include="Infrastructure\Persistence\Migrations\" />
+      <Folder Include="ServicesManagement\Application\" />
+      <Folder Include="ServicesManagement\Domain\" />
+      <Folder Include="ServicesManagement\Infrastructure\DependencyInjection\" />
+      <Folder Include="ServicesManagement\Infrastructure\Persistence\" />
     </ItemGroup>
 
     <ItemGroup>
@@ -21,17 +28,14 @@
 
     <ItemGroup>
       <Compile Remove="Features\**" />
-      <Compile Remove="CustomerManagement\Infrastructure\**" />
     </ItemGroup>
 
     <ItemGroup>
       <EmbeddedResource Remove="Features\**" />
-      <EmbeddedResource Remove="CustomerManagement\Infrastructure\**" />
     </ItemGroup>
 
     <ItemGroup>
       <None Remove="Features\**" />
-      <None Remove="CustomerManagement\Infrastructure\**" />
     </ItemGroup>
 
 </Project>

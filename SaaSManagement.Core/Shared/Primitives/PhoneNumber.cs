@@ -79,7 +79,7 @@ public sealed class PhoneNumber : ValueObject
     [DataType(DataType.PhoneNumber)]
     [MaxLength(MaximumNumberLength)]
     public string Number { get; set; } = string.Empty;
-    [MaxLength(MaximumPhoneNumberLength)] public string Value { get; private set; }
+    [MaxLength(MaximumPhoneNumberLength)] public string Value { get; private set; } = null!;
 
     private static bool HasPlusSignAndSpace(string number)
     {

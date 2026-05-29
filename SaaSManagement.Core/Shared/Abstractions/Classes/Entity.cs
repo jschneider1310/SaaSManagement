@@ -8,19 +8,23 @@ namespace SaaSManagement.Core.Shared.Abstractions.Classes;
 /// <typeparam name="TId">Id type of the entity</typeparam>
 public abstract class Entity<TId>
 {
-    // Allows import entities with early date creation
-    protected Entity(DateTime createdOn)
-    {
-        DateCreated = createdOn;
-    }
-    protected Entity() { }
     
-    protected TId Id { get; set; }
+    
+    protected TId Id { get; set; } = default!;
     public DateTime DateCreated { get; } = DateTime.UtcNow;
     public DateTime? DateModified { get; private set; }
     public DateTime? DateDeleted { get; private set; }
     public bool IsDeleted { get; private set; }
     public bool IsArchived { get; private set; }
+    
+    
+    // Allows import entities with early date creation
+        protected Entity(DateTime createdOn)
+        {
+            DateCreated = createdOn;
+        }
+        protected Entity() { }
+    
     /// <summary>
     /// Returns the Id of an Entity as a string object.
     /// </summary>

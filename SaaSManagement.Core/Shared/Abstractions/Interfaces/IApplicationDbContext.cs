@@ -2,8 +2,8 @@
 // Author: J. Schneider - j.g@live.com
 
 using Microsoft.EntityFrameworkCore;
-using SaaSManagement.Core.CustomerManagement.Entities;
-using SaaSManagement.Core.ServicesManagement.Entities;
+using SaaSManagement.Core.CustomerManagement.Domain.Entities;
+using SaaSManagement.Core.ServicesManagement.Domain.Entities;
 using SaaSManagement.Core.Shared.Primitives;
 
 namespace SaaSManagement.Core.Shared.Abstractions.Interfaces;

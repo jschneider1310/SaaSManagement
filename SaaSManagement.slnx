@@ -4,13 +4,8 @@
   </Folder>
   <Folder Name="/src/">
     <File Path=".gitignore" />
-    <Project Path="SaaSManagement.Application/SaaSManagement.Application.csproj" />
     <Project Path="SaaSManagement.Core/SaaSManagement.Core.csproj" />
-    <Project Path="SaaSManagement.Infrastructure/SaaSManagement.Infrastructure.csproj" />
     <Project Path="SaaSManagement.Tests.ArchiteturalTests/SaaSManagement.Tests.ArchiteturalTests.csproj" />
     <Project Path="SaaSManagement.Tests.UnitTest/SaaSManagement.Tests.UnitTest.csproj" />
-    <Project Path="SaaSManagement.Web.Shared/SaaSManagement.Web.Shared.csproj" />
-    <Project Path="SaaSManagement.Web/SaaSManagement.Web.Client/SaaSManagement.Web.Client.csproj" />
-    <Project Path="SaaSManagement.Web/SaaSManagement.Web/SaaSManagement.Web.csproj" />
   </Folder>
 </Solution>
