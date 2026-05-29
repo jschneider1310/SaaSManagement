@@ -14,7 +14,7 @@
       <Folder Include="CustomerManagement\Application\Queries\" />
       <Folder Include="CustomerManagement\Application\Services\" />
       <Folder Include="CustomerManagement\Domain\Services\" />
-      <Folder Include="CustomerManagement\Infrastructure\" />
+      <Folder Include="CustomerManagement\Infrastructure\Persistence\Migrations\" />
       <Folder Include="Infrastructure\DependencyInjection\" />
       <Folder Include="Infrastructure\Persistence\Migrations\" />
       <Folder Include="ServicesManagement\Application\" />
@@ -27,6 +27,7 @@
       <PackageReference Include="Microsoft.AspNetCore.Routing" Version="2.3.10" />
       <PackageReference Include="Microsoft.AspNetCore.Routing.Abstractions" Version="2.3.10" />
       <PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.0" />
+      <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="10.0.2" />
       <PackageReference Include="Ulid" Version="1.4.1" />
     </ItemGroup>
 

@@ -7,15 +7,15 @@ using SaaSManagement.Core.ServicesManagement.Domain.Entities;
 using SaaSManagement.Core.Shared.Abstractions.Interfaces;
 using SaaSManagement.Core.Shared.Primitives;
 
-namespace SaaSManagement.Core.Infrastructure.Persistence;
+namespace SaaSManagement.Core.CustomerManagement.Infrastructure.Persistence;
 
-public sealed class ApplicationDbContext : DbContext, IApplicationDbContext
+public sealed class CustomerManagementDbContext : DbContext, IApplicationDbContext
 {
-    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
+    public CustomerManagementDbContext(DbContextOptions<CustomerManagementDbContext> options) : base(options)
     {
     }
 
-    private ApplicationDbContext()
+    private CustomerManagementDbContext()
     {
     }
     public DbSet<Customer> Customers { get; set; }
