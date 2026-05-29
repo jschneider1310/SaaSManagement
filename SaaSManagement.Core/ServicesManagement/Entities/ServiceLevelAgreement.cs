@@ -4,12 +4,11 @@
 using SaaSManagement.Core.CustomerManagement.Entities;
 using SaaSManagement.Core.ServicesManagement.Domain.Primitives;
 using SaaSManagement.Core.ServicesManagement.Records;
-using SaaSManagement.Core.Shared.Abstractions;
 using SaaSManagement.Core.Shared.Abstractions.Classes;
 using SaaSManagement.Core.Shared.Exceptions;
 using SaaSManagement.Core.Shared.Utilities;
 
-namespace SaaSManagement.Core.ServicesManagement.Domain.Entities;
+namespace SaaSManagement.Core.ServicesManagement.Entities;
 
 /// <summary>
 /// Represents a Service-Level Agreement for a given SaaS service provided.
@@ -17,9 +16,9 @@ namespace SaaSManagement.Core.ServicesManagement.Domain.Entities;
 public sealed class ServiceLevelAgreement : Entity<SlaId>
 {
     private new SlaId Id { get; set; } = $"SLA-{Ulid.NewUlid()}";
-    public Customer Customer { get; private set; }
-    public string Title { get; private set; }
-    public HtmlEncodedText AgreementText { get; private set; }
+    public Customer Customer { get; private set; } = null!;
+    public string Title { get; private set; } = null!;
+    public HtmlEncodedText AgreementText { get; private set; } = null!;
     public DateTime StartingDate { get; private set; }
     public DateTime EndingDate { get; private set; }
     public bool IsClosed { get; private set; }
@@ -46,12 +45,12 @@ public sealed class ServiceLevelAgreement : Entity<SlaId>
     /// <param name="startingDate">DateTime</param>
     /// <param name="contractLength">Integer</param>
     /// <returns>A new ServiceLevelAgreement object</returns>
-    /// <exception cref="SLAException"><see cref="SLAException"/> if title is null, empty, or white spaces.</exception>
+    /// <exception cref="SlaException"><see cref="SlaException"/> if title is null, empty, or white spaces.</exception>
     public static ServiceLevelAgreement Create(Customer customer, string title,
         HtmlEncodedText text, DateTime startingDate, int contractLength)
     {
         if(!VerifyIf.IsNotEmptyOrNullString(title))
-            throw new SLAException("The title must be a non-empty string.", nameof(ServiceLevelAgreement));
+            throw new SlaException("The title must be a non-empty string.", nameof(ServiceLevelAgreement));
         
         var agreement
             = new ServiceLevelAgreement(customer, title, text, startingDate, contractLength);
@@ -62,11 +61,11 @@ public sealed class ServiceLevelAgreement : Entity<SlaId>
     /// Updates the SLA title
     /// </summary>
     /// <param name="title">String</param>
-    /// <exception cref="SLAException">If the title is null, empty, or white spaces.</exception>
+    /// <exception cref="SlaException">If the title is null, empty, or white spaces.</exception>
     public void UpdateTitle(string title)
     {
         if(!VerifyIf.IsNotEmptyOrNullString(title))
-            throw new SLAException("The title must be a non-empty string.", nameof(ServiceLevelAgreement));
+            throw new SlaException("The title must be a non-empty string.", nameof(ServiceLevelAgreement));
         Title = title;
     }
     /// <summary>

@@ -3,11 +3,12 @@
 
 using System.ComponentModel.DataAnnotations;
 using SaaSManagement.Core.CustomerManagement.Primitives;
-using SaaSManagement.Core.ServicesManagement.Domain.Entities;
+using SaaSManagement.Core.ServicesManagement.Entities;
 using SaaSManagement.Core.Shared.Abstractions.Classes;
 using SaaSManagement.Core.Shared.Primitives;
 
 namespace SaaSManagement.Core.CustomerManagement.Entities;
+
 /// <summary>
 /// Represents a Customer into the system. It is the aggregate root for different
 /// types of customers (<see cref="IndividualCustomer"/> and <see cref="BusinessCustomer"/>).
@@ -20,19 +21,20 @@ public abstract class Customer : AggregateRoot<ClientId>
     private readonly List<Note> _notes = [];
 
     public new ClientId Id { get; private set; } = new ClientId($"C-{Ulid.NewUlid()}");
-    public IReadOnlyCollection<Address> Addresses  => _addresses;
+    public IReadOnlyCollection<Address> Addresses => _addresses;
     public IReadOnlyCollection<Note> Notes => _notes;
-    public Email Email { get; private set; }
-    public PhoneNumber PhoneNumber { get; private set; }
-    [MaxLength(256)] public string? WebsiteAddress { get; private set; } =  string.Empty;
-    public ServiceLevelAgreement ServiceLevelAgreement { get; private set; }
+    public Email Email { get; private set; } = null!;
+    public PhoneNumber PhoneNumber { get; private set; } = null!;
+    [MaxLength(256)] public string? WebsiteAddress { get; private set; } = string.Empty;
+    public ServiceLevelAgreement ServiceLevelAgreement { get; private set; } = null!;
 
 
-    protected Customer(Email email, PhoneNumber phoneNumber, string? websiteAddress, ServiceLevelAgreement serviceLevelAgreement)
+    protected Customer(Email email, PhoneNumber phoneNumber, string? websiteAddress,
+        ServiceLevelAgreement serviceLevelAgreement)
     {
         Email = email;
         PhoneNumber = phoneNumber;
-        WebsiteAddress = websiteAddress ??  string.Empty;
+        WebsiteAddress = websiteAddress ?? string.Empty;
         ServiceLevelAgreement = serviceLevelAgreement;
     }
 
@@ -51,11 +53,13 @@ public abstract class Customer : AggregateRoot<ClientId>
     /// </summary>
     /// <param name="address"><see cref="Address"/> object</param>
     public void AddAddress(Address address) => _addresses.Add(address);
+
     /// <summary>
     /// Removes an <see cref="Address"/> from the aggregate.
     /// </summary>
     /// <param name="address"><see cref="Address"/> object.</param>
     public void RemoveAddress(Address address) => _addresses.Remove(address);
+
     /// <summary>
     /// Updates an <see cref="Address"/> on the aggregate. If the address is not found,
     /// the given address is added, and updated otherwise.
@@ -66,8 +70,10 @@ public abstract class Customer : AggregateRoot<ClientId>
         var addr = _addresses.Any(p => p.Equals(address));
         if (addr)
         {
-            var oldAddress = _addresses.FirstOrDefault(p => p.Equals(address)); 
-            oldAddress.UpdateNumberOrBuildingName(address.NumberOrBuildingName); // Not null because it is a required field of Address object.
+            var oldAddress = _addresses.FirstOrDefault(p => p.Equals(address));
+            oldAddress!.UpdateNumberOrBuildingName(address
+                .NumberOrBuildingName); // Not null because it is a required field of Address object.
+
             oldAddress.UpdateAddressLine1(address.AddressLine1);
             oldAddress.UpdateAddressLine2(address.AddressLine2);
             oldAddress.UpdatePostalCode(address.PostalCode);
@@ -75,10 +81,7 @@ public abstract class Customer : AggregateRoot<ClientId>
             oldAddress.UpdateCountry(address.Country);
             oldAddress.UpdateBorough(address.Borough);
         }
-        else
-        {
-            _addresses.Add(address);
-        }
+        else { _addresses.Add(address); }
     }
 
     public void AddNote(Note note) => _notes.Add(note);
@@ -87,23 +90,23 @@ public abstract class Customer : AggregateRoot<ClientId>
     public void UpdateNote(Note note)
     {
         var oldNote = _notes.FirstOrDefault(p => p.Equals(note));
-        if (oldNote != null)
+        if (oldNote is not null)
         {
             oldNote.UpdateNote(note.Title, note.Content, note.NoteType);
         }
-        else
-        {
-            _notes.Add(note);
-        }
+        else { _notes.Add(note); }
     }
+
     public void UpdateEmail(Email email) => Email = email;
+
     public void UpdateWebsiteAddress(string websiteAddress)
-    { 
-        if(string.IsNullOrWhiteSpace(websiteAddress))
+    {
+        if (string.IsNullOrWhiteSpace(websiteAddress))
             throw new ArgumentNullException(nameof(websiteAddress));
+
         WebsiteAddress = websiteAddress;
     }
-    
+
     public void UpdateSla(ServiceLevelAgreement sla) => ServiceLevelAgreement = sla;
     public override string GetId() => Id;
 }

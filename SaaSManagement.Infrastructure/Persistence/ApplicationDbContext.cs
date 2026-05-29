@@ -3,7 +3,7 @@
 
 using Microsoft.EntityFrameworkCore;
 using SaaSManagement.Core.CustomerManagement.Entities;
-using SaaSManagement.Core.ServicesManagement.Domain.Entities;
+using SaaSManagement.Core.ServicesManagement.Entities;
 using SaaSManagement.Core.Shared.Abstractions.Interfaces;
 using SaaSManagement.Core.Shared.Primitives;
 

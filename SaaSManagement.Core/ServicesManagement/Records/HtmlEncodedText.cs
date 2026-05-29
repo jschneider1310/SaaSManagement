@@ -13,7 +13,7 @@ public sealed record HtmlEncodedText()
     public HtmlEncodedText(string encodedText) : this()
     {
         if(VerifyIf.IsNotEmptyOrNullString(encodedText))
-            throw new SLAException("The encodedText must be a non-empty string.", nameof(HtmlEncodedText));
+            throw new SlaException("The encodedText must be a non-empty string.", nameof(HtmlEncodedText));
         
         EncodedText = encodedText;
     }

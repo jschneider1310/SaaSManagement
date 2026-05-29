@@ -2,11 +2,15 @@
 // Author: J. Schneider - j.g@live.com
 
 using System.ComponentModel.DataAnnotations;
-using SaaSManagement.Core.ServicesManagement.Domain.Entities;
+using SaaSManagement.Core.CustomerManagement.Constants;
+using SaaSManagement.Core.ServicesManagement.Entities;
 using SaaSManagement.Core.Shared.Primitives;
 
 namespace SaaSManagement.Core.CustomerManagement.Entities;
-
+/// <summary>
+/// This class represents a Business Client into the system as an aggregate that
+/// inherits from <see cref="Customer"/>
+/// </summary>
 public sealed class BusinessCustomer : Customer
 {
     private readonly List<BusinessContact> _contacts = [];
@@ -15,7 +19,7 @@ public sealed class BusinessCustomer : Customer
     [MaxLength(60)] public string FantasyName { get; private set; }
     [MaxLength(21)] public string RegistrationNumber { get; private set; }
     [MaxLength(40)] public string RegistrationBody { get; private set; }
-    public ServiceLevelAgreement ServiceLevelAgreement { get; private set; }
+    public CustomerType  CustomerType { get; } = CustomerType.Business; 
     public IReadOnlyCollection<BusinessContact> Contacts => _contacts;
 
     private BusinessCustomer(Email email, PhoneNumber phoneNumber, string? websiteAddress,

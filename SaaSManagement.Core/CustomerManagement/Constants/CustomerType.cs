@@ -7,6 +7,6 @@ namespace SaaSManagement.Core.CustomerManagement.Constants;
 /// </summary>
 public enum CustomerType
 {
-    Individual, // Single users of the system
+    Individual, 
     Business
 }

@@ -3,7 +3,7 @@
 
 namespace SaaSManagement.Core.Shared.Exceptions;
 
-public sealed class SLAException(string message, string? paramName) : Exception($"{message} -  {paramName}")
+public sealed class SlaException(string message, string? paramName) : Exception($"{message} -  {paramName}")
 {
     
 }
