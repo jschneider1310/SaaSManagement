@@ -1,6 +1,7 @@
 // Project: SaaSManagement, 21/05/2026
 // Author: J. Schneider - j.g@live.com
 
+using System.ComponentModel.DataAnnotations;
 using SaaSManagement.Core.CustomerManagement.Domain.Entities;
 using SaaSManagement.Core.ServicesManagement.Domain.Primitives;
 using SaaSManagement.Core.ServicesManagement.Domain.Records;
@@ -17,7 +18,7 @@ public sealed class ServiceLevelAgreement : Entity<SlaId>
 {
     private new SlaId Id { get; set; } = $"SLA-{Ulid.NewUlid()}";
     public Customer Customer { get; private set; } = null!;
-    public string Title { get; private set; } = null!;
+    [MaxLength(60)] public string Title { get; private set; } = null!;
     public HtmlEncodedText AgreementText { get; private set; } = null!;
     public DateTime StartingDate { get; private set; }
     public DateTime EndingDate { get; private set; }

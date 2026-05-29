@@ -15,8 +15,6 @@
       <Folder Include="CustomerManagement\Application\Services\" />
       <Folder Include="CustomerManagement\Domain\Services\" />
       <Folder Include="CustomerManagement\Infrastructure\Persistence\Migrations\" />
-      <Folder Include="Infrastructure\DependencyInjection\" />
-      <Folder Include="Infrastructure\Persistence\Migrations\" />
       <Folder Include="ServicesManagement\Application\" />
       <Folder Include="ServicesManagement\Domain\" />
       <Folder Include="ServicesManagement\Infrastructure\DependencyInjection\" />
