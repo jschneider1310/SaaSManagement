@@ -18,4 +18,11 @@ public interface IApplicationDbContext
     DbSet<ServiceLevelAgreement> ServiceLevelAgreements { get; set; }
     DbSet<Address> Addresses { get; set; }
     DbSet<Note> Notes { get; set; }
+    
+    /// <summary>
+    /// Saves the changes to the database.
+    /// </summary>
+    /// <param name="cancellationToken"><see cref="CancellationToken"/> object</param>
+    /// <returns>Integer with 1 if success and zero otherwise.</returns>
+    public Task<int> SaveChangesAsync(CancellationToken cancellationToken);
 }
