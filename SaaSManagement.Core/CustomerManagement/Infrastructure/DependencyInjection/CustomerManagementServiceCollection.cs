@@ -4,6 +4,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.Extensions.DependencyInjection;
+using SaaSManagement.Core.CustomerManagement.Domain.Context;
 using SaaSManagement.Core.CustomerManagement.Infrastructure.Persistence;
 using SaaSManagement.Core.Shared.Abstractions.Interfaces;
 
@@ -17,7 +18,7 @@ public static class CustomerManagementServiceCollection
         // ---- DbContext ---------------------------------------------------------------------------------------
         // DbContext with dynamic tenant connection string resolution
         services
-            .AddDbContextPool<IApplicationDbContext,
+            .AddDbContextPool<ICustomerManagementDbContext,
                 CustomerManagementDbContext>((serviceProvider, options) =>
                                              {
                                                  options.UseNpgsql(connectionString,

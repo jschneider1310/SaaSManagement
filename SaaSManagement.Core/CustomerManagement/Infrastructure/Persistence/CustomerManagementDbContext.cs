@@ -2,14 +2,14 @@
 // Author: J. Schneider - j.g@live.com
 
 using Microsoft.EntityFrameworkCore;
+using SaaSManagement.Core.CustomerManagement.Domain.Context;
 using SaaSManagement.Core.CustomerManagement.Domain.Entities;
 using SaaSManagement.Core.ServicesManagement.Domain.Entities;
-using SaaSManagement.Core.Shared.Abstractions.Interfaces;
 using SaaSManagement.Core.Shared.Primitives;
 
 namespace SaaSManagement.Core.CustomerManagement.Infrastructure.Persistence;
 
-public sealed class CustomerManagementDbContext : DbContext, IApplicationDbContext
+public sealed class CustomerManagementDbContext : DbContext, ICustomerManagementDbContext
 {
     public CustomerManagementDbContext(DbContextOptions<CustomerManagementDbContext> options) : base(options)
     {
