@@ -30,16 +30,13 @@ public abstract class Customer : AggregateRoot<ClientId>
     public Email Email { get; private set; } = null!;
     public PhoneNumber PhoneNumber { get; private set; } = null!;
     [MaxLength(256)] public string? WebsiteAddress { get; private set; } = string.Empty;
-    public ServiceLevelAgreement ServiceLevelAgreement { get; private set; } = null!;
 
 
-    protected Customer(Email email, PhoneNumber phoneNumber, string? websiteAddress,
-        ServiceLevelAgreement serviceLevelAgreement)
+    protected Customer(Email email, PhoneNumber phoneNumber, string? websiteAddress)
     {
         Email = email;
         PhoneNumber = phoneNumber;
         WebsiteAddress = websiteAddress ?? string.Empty;
-        ServiceLevelAgreement = serviceLevelAgreement;
     }
 
     protected Customer() { }
@@ -111,6 +108,5 @@ public abstract class Customer : AggregateRoot<ClientId>
         WebsiteAddress = websiteAddress;
     }
 
-    public void UpdateSla(ServiceLevelAgreement sla) => ServiceLevelAgreement = sla;
     public override string GetId() => Id;
 }

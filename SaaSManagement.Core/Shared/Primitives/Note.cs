@@ -4,6 +4,7 @@
 using System.ComponentModel.DataAnnotations;
 using SaaSManagement.Core.CustomerManagement.Domain.Primitives;
 using SaaSManagement.Core.Shared.Abstractions.Classes;
+using SaaSManagement.Core.Shared.Constants;
 using SaaSManagement.Core.Shared.Exceptions;
 using SaaSManagement.Core.Shared.Utilities;
 

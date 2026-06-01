@@ -3,7 +3,6 @@
 
 using System.ComponentModel.DataAnnotations;
 using SaaSManagement.Core.CustomerManagement.Domain.Constants;
-using SaaSManagement.Core.ServicesManagement.Domain.Entities;
 using SaaSManagement.Core.Shared.Primitives;
 
 namespace SaaSManagement.Core.CustomerManagement.Domain.Entities;
@@ -24,11 +23,10 @@ public sealed class BusinessCustomer : Customer
 
     private BusinessCustomer(Email email, PhoneNumber phoneNumber, string? websiteAddress,
         string legalName, string fantasyName, string registrationNumber,
-        string registrationBody, ServiceLevelAgreement serviceLevelAgreement) : base(
+        string registrationBody) : base(
         email,
         phoneNumber,
-        websiteAddress,
-        serviceLevelAgreement)
+        websiteAddress)
     {
         LegalName = legalName ?? throw new ArgumentNullException(nameof(legalName));
         FantasyName = fantasyName ?? throw new ArgumentNullException(nameof(fantasyName));
@@ -49,11 +47,10 @@ public sealed class BusinessCustomer : Customer
     /// <param name="fantasyName">String</param>
     /// <param name="registrationNumber">String</param>
     /// <param name="registrationBody">String</param>
-    /// <param name="sla"><see cref="ServiceLevelAgreement"/></param>
     /// <returns>A new <see cref="BusinessCustomer"/> object.</returns>
     public static BusinessCustomer Create(Email email, PhoneNumber phoneNumber,
         string? websiteAddress, string legalName, string fantasyName,
-        string registrationNumber, string registrationBody, ServiceLevelAgreement sla)
+        string registrationNumber, string registrationBody)
     {
         return new BusinessCustomer(email,
             phoneNumber,
@@ -61,8 +58,7 @@ public sealed class BusinessCustomer : Customer
             legalName,
             fantasyName,
             registrationNumber,
-            registrationBody,
-            sla);
+            registrationBody);
     }
 
     /// <summary>
