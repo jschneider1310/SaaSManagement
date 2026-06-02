@@ -2,6 +2,7 @@
 // Author: J. Schneider - j.g@live.com
 
 using System.ComponentModel.DataAnnotations;
+using SaaSManagement.Core.CustomerManagement.Domain.Primitives;
 using SaaSManagement.Core.Shared.Abstractions;
 using SaaSManagement.Core.Shared.Abstractions.Classes;
 using SaaSManagement.Core.Shared.Exceptions;
@@ -32,8 +33,9 @@ public sealed class Address : ValueObject
     /// <param name="city">String</param>
     /// <param name="borough">String</param>
     /// <param name="country">String</param>
+    /// <param name="customerId"><see cref="ClientId"/></param>
     public Address(string numberOrBuildingName, string addressLine1, string addressLine2,
-        string postalCode, string city, string borough, string country)
+        string postalCode, string city, string borough, string country, ClientId customerId)
     {
         // Verifying for empty strings
         var add1 = VerifyIf.IsNotEmptyOrNullString(numberOrBuildingName, addressLine1, addressLine2,  postalCode);
@@ -50,6 +52,7 @@ public sealed class Address : ValueObject
         City = city;
         Borough = borough;
         Country = country;
+        CustomerId = customerId;
     }
     public AddressId AddressId { get; private set; } = null!;
     [MaxLength(60)] public string NumberOrBuildingName { get; private set; } = string.Empty;
@@ -59,6 +62,8 @@ public sealed class Address : ValueObject
     [MaxLength(40)] public string City { get; private set; } = string.Empty;
     [MaxLength(40)] public string? Borough { get; private set; } = string.Empty;
     [MaxLength(60)] public string Country { get; private set; } = string.Empty;
+    public ClientId CustomerId { get; private set; } = null!;
+
     /// <summary>
     /// Updates the corresponding value. If the value is null or empty (or white spaces)
     /// it throws an <see cref="AddressArgumentException"/>

@@ -27,4 +27,5 @@ public sealed class ClientId : ApplicationId
         {
             yield return Value;
         }
+    public override string ToString() => Value;
 }

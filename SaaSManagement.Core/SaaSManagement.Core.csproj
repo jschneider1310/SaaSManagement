@@ -14,7 +14,6 @@
         <Folder Include="CustomerManagement\Application\Queries\"/>
         <Folder Include="CustomerManagement\Application\Services\"/>
         <Folder Include="CustomerManagement\Domain\Services\"/>
-        <Folder Include="CustomerManagement\Infrastructure\Persistence\EntityConfiguration\" />
         <Folder Include="CustomerManagement\Infrastructure\Persistence\Migrations\"/>
         <Folder Include="ServicesManagement\Application\"/>
         <Folder Include="ServicesManagement\Infrastructure\Persistence\"/>
