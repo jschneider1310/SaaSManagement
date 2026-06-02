@@ -13,8 +13,8 @@ namespace SaaSManagement.Core.CustomerManagement.Domain.Entities;
 /// </summary>
 public sealed class IndividualCustomer : Customer
 {
-    [MaxLength(30)] public string FirstName { get; private set; }
-    [MaxLength(30)] public string LastName { get; private set; }
+    [MaxLength(CustomerManagementConstants.MaximumNameLength)] public string FirstName { get; private set; }
+    [MaxLength(CustomerManagementConstants.MaximumNameLength)] public string LastName { get; private set; }
     public DateOnly BirthDate { get; private set; }
     public CustomerType CustomerType { get; } = CustomerType.Individual;
 

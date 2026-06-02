@@ -2,6 +2,7 @@
 // Author: J. Schneider - j.g@live.com
 
 using System.ComponentModel.DataAnnotations;
+using SaaSManagement.Core.CustomerManagement.Domain.Constants;
 using SaaSManagement.Core.CustomerManagement.Domain.Primitives;
 using SaaSManagement.Core.ServicesManagement.Domain.Entities;
 using SaaSManagement.Core.Shared.Abstractions.Classes;
@@ -29,7 +30,7 @@ public abstract class Customer : AggregateRoot<ClientId>
     public IReadOnlyCollection<Note> Notes => _notes;
     public Email Email { get; private set; } = null!;
     public PhoneNumber PhoneNumber { get; private set; } = null!;
-    [MaxLength(256)] public string? WebsiteAddress { get; private set; } = string.Empty;
+    [MaxLength(CustomerManagementConstants.MaximumWebsiteLength)] public string? WebsiteAddress { get; private set; } = string.Empty;
 
 
     protected Customer(Email email, PhoneNumber phoneNumber, string? websiteAddress)

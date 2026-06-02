@@ -6,6 +6,7 @@ using SaaSManagement.Core.CustomerManagement.Domain.Constants;
 using SaaSManagement.Core.Shared.Primitives;
 
 namespace SaaSManagement.Core.CustomerManagement.Domain.Entities;
+
 /// <summary>
 /// This class represents a Business Client into the system as an aggregate that
 /// inherits from <see cref="Customer"/>
@@ -14,19 +15,24 @@ public sealed class BusinessCustomer : Customer
 {
     private readonly List<BusinessContact> _contacts = [];
 
-    [MaxLength(60)] public string LegalName { get; private set; }
-    [MaxLength(60)] public string FantasyName { get; private set; }
-    [MaxLength(21)] public string RegistrationNumber { get; private set; }
-    [MaxLength(40)] public string RegistrationBody { get; private set; }
-    public CustomerType  CustomerType { get; } = CustomerType.Business; 
+    [MaxLength(CustomerManagementConstants.MaximumBusinessLegalOrFantasyNameLength)]
+    public string LegalName { get; private set; }
+
+    [MaxLength(CustomerManagementConstants.MaximumBusinessLegalOrFantasyNameLength)]
+    public string FantasyName { get; private set; }
+
+    [MaxLength(CustomerManagementConstants.MaximumRegistrationNumberLength)]
+    public string RegistrationNumber { get; private set; }
+
+    [MaxLength(CustomerManagementConstants.MaximumRegistrationBodyNameLength)]
+    public string RegistrationBody { get; private set; }
+
+    public CustomerType CustomerType { get; } = CustomerType.Business;
     public IReadOnlyCollection<BusinessContact> Contacts => _contacts;
 
     private BusinessCustomer(Email email, PhoneNumber phoneNumber, string? websiteAddress,
         string legalName, string fantasyName, string registrationNumber,
-        string registrationBody) : base(
-        email,
-        phoneNumber,
-        websiteAddress)
+        string registrationBody) : base(email, phoneNumber, websiteAddress)
     {
         LegalName = legalName ?? throw new ArgumentNullException(nameof(legalName));
         FantasyName = fantasyName ?? throw new ArgumentNullException(nameof(fantasyName));
