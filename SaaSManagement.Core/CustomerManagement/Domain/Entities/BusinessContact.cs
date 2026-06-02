@@ -2,22 +2,30 @@
 // Author: J. Schneider - j.g@live.com
 
 using System.ComponentModel.DataAnnotations;
+using SaaSManagement.Core.CustomerManagement.Domain.Constants;
 using SaaSManagement.Core.CustomerManagement.Domain.Primitives;
 using SaaSManagement.Core.Shared.Abstractions.Classes;
 using SaaSManagement.Core.Shared.Primitives;
 using SaaSManagement.Core.Shared.Utilities;
 
 namespace SaaSManagement.Core.CustomerManagement.Domain.Entities;
+
 /// <summary>
 /// Represents a contact of the <see cref="BusinessCustomer"/>
 /// </summary>
 public sealed class BusinessContact : Entity<string>
 {
     private string ContactId { get; set; } = Guid.NewGuid().ToString();
-    [MaxLength(40)] public string FullName { get; private set; }
+
+    [MaxLength(CustomerManagementConstants.MaximumFullNameLength)]
+    public string FullName { get; private set; }
+
     public PhoneNumber PhoneNumber { get; private set; }
     public Email Email { get; private set; }
-    [MaxLength(40)] public string PositionName { get; private set; }
+
+    [MaxLength(CustomerManagementConstants.MaximumShortStringFieldLength)]
+    public string PositionName { get; private set; }
+
     public ClientId ClientId { get; private set; }
 
     private BusinessContact(string fullName, PhoneNumber phoneNumber, Email email,
@@ -29,6 +37,7 @@ public sealed class BusinessContact : Entity<string>
         PositionName = positionName;
         ClientId = clientId;
     }
+
     /// <summary>
     /// Creates a new BusinessContact
     /// </summary>
@@ -48,6 +57,7 @@ public sealed class BusinessContact : Entity<string>
 
         return new BusinessContact(fullName, phoneNumber, email, positionName, clientId);
     }
+
     /// <summary>
     /// Updates the fullname 
     /// </summary>
@@ -60,16 +70,19 @@ public sealed class BusinessContact : Entity<string>
 
         FullName = fullName;
     }
+
     /// <summary>
     /// Updates the phone number.
     /// </summary>
     /// <param name="phoneNumber"><see cref="PhoneNumber"/></param>
     public void UpdatePhoneNumber(PhoneNumber phoneNumber) => PhoneNumber = phoneNumber;
+
     /// <summary>
     /// Updates the email.
     /// </summary>
     /// <param name="email"><see cref="Email"/></param>
     public void UpdateEmail(Email email) => Email = email;
+
     /// <summary>
     /// Updates the position name.
     /// </summary>

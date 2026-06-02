@@ -9,9 +9,11 @@ namespace SaaSManagement.Core.CustomerManagement.Domain.Constants;
 public static class CustomerManagementConstants
 {
     public const int MaximumNameLength = 30; // For name and surname ( this value for each separately)
+    public const int MaximumFullNameLength = 50; // For the entire full name.
     public const int MaximumWebsiteLength = 256; // Maximum URI size
     public const int MaximumBusinessLegalOrFantasyNameLength = 60;
     public const int MaximumRegistrationNumberLength = 30;
     public const int MaximumRegistrationBodyNameLength = 40;
+    public const int MaximumShortStringFieldLength = 30;
 
 }

@@ -37,6 +37,7 @@ public sealed class CustomerManagementDbContext : DbContext, ICustomerManagement
         modelBuilder.HasDefaultSchema("CustomerManagement");
 
         modelBuilder.ApplyConfiguration(new CustomerEntityConfiguration());
+        modelBuilder.ApplyConfiguration(new IndividualCustomerEntityConfiguration());
         
         
         base.OnModelCreating(modelBuilder);
