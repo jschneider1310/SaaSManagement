@@ -6,12 +6,20 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.Extensions.DependencyInjection;
 using SaaSManagement.Core.CustomerManagement.Domain.Context;
 using SaaSManagement.Core.CustomerManagement.Infrastructure.Persistence;
-using SaaSManagement.Core.Shared.Abstractions.Interfaces;
 
 namespace SaaSManagement.Core.CustomerManagement.Infrastructure.DependencyInjection;
-
+/// <summary>
+/// Static class for registering the services from Customer Management.
+/// </summary>
 public static class CustomerManagementServiceCollection
 {
+    /// <summary>
+    /// Registers the <see cref="IServiceCollection"/> services used by the Customer
+    /// Management, including the DbContext.
+    /// </summary>
+    /// <param name="services"><see cref="IServiceCollection"/></param>
+    /// <param name="connectionString">String with the connection string</param>
+    /// <returns>The <see cref="IServiceCollection"/> collection.</returns>
     public static IServiceCollection AddCustomerManagementServiceCollection(
         this IServiceCollection services, string connectionString)
     {
@@ -29,7 +37,7 @@ public static class CustomerManagementServiceCollection
                                                                  HistoryRepository
                                                                      .DefaultTableName,
                                                                  schema:
-                                                                 "ClientManagement");
+                                                                 "CustomerManagement");
 
                                                              o.EnableRetryOnFailure(
                                                                  maxRetryCount: 3,
@@ -45,7 +53,6 @@ public static class CustomerManagementServiceCollection
                                                          QueryTrackingBehavior
                                                              .NoTrackingWithIdentityResolution);
                                              });
-
         return services;
     }
 }

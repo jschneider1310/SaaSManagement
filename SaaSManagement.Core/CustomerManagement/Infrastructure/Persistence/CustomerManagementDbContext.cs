@@ -24,4 +24,16 @@ public sealed class CustomerManagementDbContext : DbContext, ICustomerManagement
     public DbSet<ServiceLevelAgreement> ServiceLevelAgreements { get; set; }
     public DbSet<Address> Addresses { get; set; }
     public DbSet<Note> Notes { get; set; }
+    
+    public new Task<int> SaveChangesAsync(CancellationToken cancellationToken)
+    {
+        return base.SaveChangesAsync(cancellationToken);
+    }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(IndividualCustomer).Assembly);
+        modelBuilder.HasDefaultSchema("CustomerManagement");
+        base.OnModelCreating(modelBuilder);
+    }
 }
