@@ -15,7 +15,7 @@ namespace SaaSManagement.Core.CustomerManagement.Domain.Entities;
 /// </summary>
 public sealed class BusinessContact : Entity<string>
 {
-    private string ContactId { get; set; } = Guid.NewGuid().ToString();
+    public string ContactId { get; private set ; } = Guid.NewGuid().ToString();
 
     [MaxLength(CustomerManagementConstants.MaximumFullNameLength)]
     public string FullName { get; private set; }
