@@ -64,7 +64,7 @@ public abstract class Customer : AggregateRoot<ClientId>
 
     /// <summary>
     /// Updates an <see cref="Address"/> on the aggregate. If the address is not found,
-    /// the given address is added, and updated otherwise.
+    /// the given address is added. If the address exits it is updated.
     /// </summary>
     /// <param name="address"><see cref="Address"/> object.</param>
     public void UpdateAddress(Address address)
@@ -85,10 +85,20 @@ public abstract class Customer : AggregateRoot<ClientId>
         }
         else { _addresses.Add(address); }
     }
-
+    /// <summary>
+    /// Adds a new note to the customer
+    /// </summary>
+    /// <param name="note"><see cref="Note"/></param>
     public void AddNote(Note note) => _notes.Add(note);
+    /// <summary>
+    /// Removes a note from a customer
+    /// </summary>
+    /// <param name="note"><see cref="Note"/></param>
     public void RemoveNote(Note note) => _notes.Remove(note);
-
+    /// <summary>
+    /// Updates a given note into the customer
+    /// </summary>
+    /// <param name="note"><see cref="Note"/></param>
     public void UpdateNote(Note note)
     {
         var oldNote = _notes.FirstOrDefault(p => p.Equals(note));
@@ -98,9 +108,16 @@ public abstract class Customer : AggregateRoot<ClientId>
         }
         else { _notes.Add(note); }
     }
-
+    /// <summary>
+    /// Updates the customer email
+    /// </summary>
+    /// <param name="email"><see cref="Email"/></param>
     public void UpdateEmail(Email email) => Email = email;
-
+    /// <summary>
+    /// Updates the customer's website address
+    /// </summary>
+    /// <param name="websiteAddress">String</param>
+    /// <exception cref="ArgumentNullException">Throws if the string is null, empty, or white spaces</exception>
     public void UpdateWebsiteAddress(string websiteAddress)
     {
         if (string.IsNullOrWhiteSpace(websiteAddress))
