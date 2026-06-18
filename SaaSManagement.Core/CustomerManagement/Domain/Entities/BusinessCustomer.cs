@@ -84,7 +84,7 @@ public sealed class BusinessCustomer : Customer
     }
 
     /// <summary>
-    /// Updates a existing <see cref="BusinessContact"/> with the provided information.
+    /// Updates an existing <see cref="BusinessContact"/> with the provided information.
     /// </summary>
     /// <param name="contactId">String</param>
     /// <param name="fullName">String</param>
