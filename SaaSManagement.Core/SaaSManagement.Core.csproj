@@ -8,10 +8,13 @@
 
     <ItemGroup>
         <Folder Include="Company\"/>
-        <Folder Include="CustomerManagement\Application\Commands\"/>
+        <Folder Include="CustomerManagement\Application\Commands\CreateCustomer\" />
+        <Folder Include="CustomerManagement\Application\Commands\UpdateCustomer\" />
         <Folder Include="CustomerManagement\Application\Dtos\"/>
         <Folder Include="CustomerManagement\Application\Exceptions\"/>
-        <Folder Include="CustomerManagement\Application\Queries\"/>
+        <Folder Include="CustomerManagement\Application\Queries\GetCustomerById\" />
+        <Folder Include="CustomerManagement\Application\Queries\GetCustomersByParameter\" />
+        <Folder Include="CustomerManagement\Application\Queries\GetCustomers\" />
         <Folder Include="CustomerManagement\Application\Services\"/>
         <Folder Include="CustomerManagement\Domain\Services\"/>
         <Folder Include="CustomerManagement\Infrastructure\Persistence\Migrations\"/>
@@ -20,9 +23,12 @@
     </ItemGroup>
 
     <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="10.0.0" />
         <PackageReference Include="Microsoft.AspNetCore.Routing" Version="2.3.10"/>
         <PackageReference Include="Microsoft.AspNetCore.Routing.Abstractions" Version="2.3.10"/>
         <PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.9"/>
+        <PackageReference Include="Microsoft.Extensions.Identity.Core" Version="10.0.9" />
+        <PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="10.0.9"/>
         <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="10.0.2"/>
         <PackageReference Include="Ulid" Version="1.4.1"/>
         <PackageReference Include="Scrutor" Version="7.0.0"/>

@@ -4,7 +4,9 @@
   </Folder>
   <Folder Name="/src/">
     <File Path=".gitignore" />
+    <Project Path="SaaSManagement.App/SaaSManagement.App.csproj" />
     <Project Path="SaaSManagement.Core/SaaSManagement.Core.csproj" />
+    <Project Path="SaaSManagement.Migrations/SaaSManagement.Migrations.csproj" />
     <Project Path="SaaSManagement.Tests.ArchiteturalTests/SaaSManagement.Tests.ArchiteturalTests.csproj" />
     <Project Path="SaaSManagement.Tests.UnitTest/SaaSManagement.Tests.UnitTest.csproj" />
   </Folder>

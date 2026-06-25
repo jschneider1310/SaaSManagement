@@ -8,6 +8,7 @@ using SaaSManagement.Core.CustomerManagement.Domain.Context;
 using SaaSManagement.Core.CustomerManagement.Infrastructure.Persistence;
 
 namespace SaaSManagement.Core.CustomerManagement.Infrastructure.DependencyInjection;
+
 /// <summary>
 /// Static class for registering the services from Customer Management.
 /// </summary>
@@ -53,6 +54,7 @@ public static class CustomerManagementServiceCollection
                                                          QueryTrackingBehavior
                                                              .NoTrackingWithIdentityResolution);
                                              });
+
         return services;
     }
 }
