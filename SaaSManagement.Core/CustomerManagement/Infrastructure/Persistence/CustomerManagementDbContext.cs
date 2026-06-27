@@ -4,7 +4,6 @@
 using Microsoft.EntityFrameworkCore;
 using SaaSManagement.Core.CustomerManagement.Domain.Context;
 using SaaSManagement.Core.CustomerManagement.Domain.Entities;
-using SaaSManagement.Core.CustomerManagement.Domain.Primitives;
 using SaaSManagement.Core.CustomerManagement.Infrastructure.Persistence.EntityConfiguration;
 using SaaSManagement.Core.ServicesManagement.Domain.Entities;
 using SaaSManagement.Core.Shared.Primitives;

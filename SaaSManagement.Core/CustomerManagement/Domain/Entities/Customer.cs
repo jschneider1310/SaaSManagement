@@ -40,6 +40,15 @@ public abstract class Customer : AggregateRoot<ClientId>
         WebsiteAddress = websiteAddress ?? string.Empty;
     }
 
+    protected Customer(ClientId id, Email email, PhoneNumber phoneNumber,
+        string? websiteAddress)
+    {
+        Id = id;
+        Email = email;
+        PhoneNumber = phoneNumber;
+        WebsiteAddress = websiteAddress ?? string.Empty;
+    }
+
     protected Customer() { }
 
     /// <summary>
@@ -55,6 +64,8 @@ public abstract class Customer : AggregateRoot<ClientId>
     /// </summary>
     /// <param name="address"><see cref="Address"/> object</param>
     public void AddAddress(Address address) => _addresses.Add(address);
+    
+    public void AddAddress(IEnumerable<Address> addresses) => _addresses.AddRange(addresses);
 
     /// <summary>
     /// Removes an <see cref="Address"/> from the aggregate.
@@ -90,6 +101,7 @@ public abstract class Customer : AggregateRoot<ClientId>
     /// </summary>
     /// <param name="note"><see cref="Note"/></param>
     public void AddNote(Note note) => _notes.Add(note);
+    public void AddNote(IEnumerable<Note> notes) => _notes.AddRange(notes);
     /// <summary>
     /// Removes a note from a customer
     /// </summary>
@@ -125,6 +137,10 @@ public abstract class Customer : AggregateRoot<ClientId>
 
         WebsiteAddress = websiteAddress;
     }
+    
+    public void UpdatePhoneNumber(PhoneNumber phoneNumber) => PhoneNumber = phoneNumber;
+    
+    
 
     public override string GetId() => Id;
 }

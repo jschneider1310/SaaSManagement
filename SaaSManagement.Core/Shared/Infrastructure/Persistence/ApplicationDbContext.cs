@@ -10,7 +10,7 @@ using SaaSManagement.Core.Shared.Abstractions.Interfaces;
 
 namespace SaaSManagement.Core.Shared.Infrastructure.Persistence;
 
-public sealed class ApplicationDbContext : IdentityDbContext<ApplicationUser, IdentityRole<string>, string,
+public class ApplicationDbContext : IdentityDbContext<ApplicationUser, IdentityRole<string>, string,
     IdentityUserClaim<string>, IdentityUserRole<string>, IdentityUserLogin<string>,
     IdentityRoleClaim<string>, IdentityUserToken<string>>, IApplicationDbContext
 {
@@ -18,7 +18,7 @@ public sealed class ApplicationDbContext : IdentityDbContext<ApplicationUser, Id
     {
     }
 
-    private ApplicationDbContext()
+    private ApplicationDbContext() // for tooling/EF
     {
     }
 

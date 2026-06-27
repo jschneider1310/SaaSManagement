@@ -26,6 +26,15 @@ public sealed class IndividualCustomer : Customer
         LastName = lastName;
         BirthDate = birthDate;
     }
+    
+    private IndividualCustomer(string id, Email email, PhoneNumber phoneNumber,
+        string? websiteAddress, string firstName, string lastName,
+        DateOnly birthDate) : base(id, email, phoneNumber, websiteAddress)
+    {
+        FirstName = firstName;
+        LastName = lastName;
+        BirthDate = birthDate;
+    }
 
     /// <summary>
     /// Creates a neu IndividualCustomer object from parameters.
@@ -41,6 +50,28 @@ public sealed class IndividualCustomer : Customer
         string? websiteAddress, string firstName, string lastName, DateOnly birthDate)
     {
         return new IndividualCustomer(email,
+            phoneNumber,
+            websiteAddress,
+            firstName,
+            lastName,
+            birthDate);
+    }
+
+    /// <summary>
+    /// Creates a neu IndividualCustomer object from parameters including its existing Id.
+    /// </summary>
+    /// <param name="id">String</param>
+    /// <param name="email"><see cref="Email"/></param>
+    /// <param name="phoneNumber"><see cref="PhoneNumber"/></param>
+    /// <param name="websiteAddress">String</param>
+    /// <param name="firstName">String with a maximum of 30 characters.</param>
+    /// <param name="lastName">String with a maximum of 30 characters.</param>
+    /// <param name="birthDate"><see cref="DateOnly"/> with the birthdate.</param>
+    /// <returns>A new <see cref="IndividualCustomer"/> object.</returns>
+    public static IndividualCustomer Create(string id, Email email, PhoneNumber phoneNumber,
+        string? websiteAddress, string firstName, string lastName, DateOnly birthDate)
+    {
+        return new IndividualCustomer(id, email,
             phoneNumber,
             websiteAddress,
             firstName,

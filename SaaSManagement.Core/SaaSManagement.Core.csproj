@@ -8,15 +8,16 @@
 
     <ItemGroup>
         <Folder Include="Company\"/>
-        <Folder Include="CustomerManagement\Application\Commands\CreateCustomer\" />
-        <Folder Include="CustomerManagement\Application\Commands\UpdateCustomer\" />
-        <Folder Include="CustomerManagement\Application\Dtos\"/>
+        <Folder Include="CustomerManagement\Application\Commands\AddBusinessContactToBusinessCustomer\" />
+        <Folder Include="CustomerManagement\Application\Commands\CreateBusinessCustomer\" />
+        <Folder Include="CustomerManagement\Application\Commands\CreateIndividualCustomer\" />
+        <Folder Include="CustomerManagement\Application\Commands\UpdateBusinessCustomer\" />
+        <Folder Include="CustomerManagement\Application\Commands\UpdateIndividualCustomer\" />
         <Folder Include="CustomerManagement\Application\Exceptions\"/>
         <Folder Include="CustomerManagement\Application\Queries\GetCustomerById\" />
         <Folder Include="CustomerManagement\Application\Queries\GetCustomersByParameter\" />
         <Folder Include="CustomerManagement\Application\Queries\GetCustomers\" />
         <Folder Include="CustomerManagement\Application\Services\"/>
-        <Folder Include="CustomerManagement\Domain\Services\"/>
         <Folder Include="CustomerManagement\Infrastructure\Persistence\Migrations\"/>
         <Folder Include="ServicesManagement\Application\"/>
         <Folder Include="ServicesManagement\Infrastructure\Persistence\"/>

@@ -42,6 +42,19 @@ public sealed class BusinessCustomer : Customer
         RegistrationBody = registrationBody
          ?? throw new ArgumentNullException(nameof(registrationBody));
     }
+    
+    private BusinessCustomer(string id, Email email, PhoneNumber phoneNumber, string? websiteAddress,
+        string legalName, string fantasyName, string registrationNumber,
+        string registrationBody) : base(id, email, phoneNumber, websiteAddress)
+    {
+        LegalName = legalName ?? throw new ArgumentNullException(nameof(legalName));
+        FantasyName = fantasyName ?? throw new ArgumentNullException(nameof(fantasyName));
+        RegistrationNumber = registrationNumber
+         ?? throw new ArgumentNullException(nameof(registrationNumber));
+
+        RegistrationBody = registrationBody
+         ?? throw new ArgumentNullException(nameof(registrationBody));
+    }
 
     /// <summary>
     /// This method creates a new BusinessCustomer from the given parameters.
@@ -68,10 +81,38 @@ public sealed class BusinessCustomer : Customer
     }
 
     /// <summary>
+    /// This method creates a new BusinessCustomer from the given parameters
+    /// including its existing Id.
+    /// </summary>
+    /// <param name="id">String with the Id</param>
+    /// <param name="email"><see cref="Email"/></param>
+    /// <param name="phoneNumber"><see cref="PhoneNumber"/></param>
+    /// <param name="websiteAddress">String</param>
+    /// <param name="legalName">String</param>
+    /// <param name="fantasyName">String</param>
+    /// <param name="registrationNumber">String</param>
+    /// <param name="registrationBody">String</param>
+    /// <returns>A new <see cref="BusinessCustomer"/> object.</returns>
+    public static BusinessCustomer Create(string id, Email email, PhoneNumber phoneNumber,
+        string? websiteAddress, string legalName, string fantasyName,
+        string registrationNumber, string registrationBody)
+    {
+        return new BusinessCustomer(id, email,
+            phoneNumber,
+            websiteAddress,
+            legalName,
+            fantasyName,
+            registrationNumber,
+            registrationBody);
+    }
+
+    /// <summary>
     /// Adds a new <see cref="BusinessContact"/> to the aggregate.
     /// </summary>
     /// <param name="contact"><see cref="BusinessContact"/></param>
     public void AddContact(BusinessContact contact) => _contacts.Add(contact);
+    
+    public void AddContacts(IEnumerable<BusinessContact> contacts)  => _contacts.AddRange(contacts);
 
     /// <summary>
     /// Removes a <see cref="BusinessContact"/>
